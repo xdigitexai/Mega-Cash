@@ -1,0 +1,2 @@
+import fs from 'node:fs';import path from 'node:path';
+const out=path.resolve('dist');fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(out,{recursive:true});for(const dir of ['src','public'])fs.cpSync(path.resolve(dir),path.join(out,dir),{recursive:true});for(const file of ['package.json','README.md','.env.example'])fs.copyFileSync(path.resolve(file),path.join(out,file));console.log('Production bundle built in dist/.');
